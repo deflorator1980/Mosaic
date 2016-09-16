@@ -6,6 +6,10 @@ package h;
 public class MultiArray {
     int SIZE = 6;
     char[][] graph = new char[SIZE][SIZE];
+    boolean two = true;
+    boolean five = true;
+    boolean one = true;
+
 
     public MultiArray() {
         for (int v = 0; v < SIZE; v++) {
@@ -14,12 +18,13 @@ public class MultiArray {
             }
         }
 
-        graph[0][0] = '+';
-        graph[1][0] = '+';
-        graph[0][1] = '+';
+        graph[0][0] = '4';
+        graph[1][0] = '4';
+        graph[0][1] = '4';
 
 
-//        graph[0][3] = '+';
+        graph[0][3] = '9';
+
 //        graph[2][4] = '+';
 //        graph[2][5] = '+';
 //        graph[3][4] = '+';
@@ -28,7 +33,9 @@ public class MultiArray {
         int vert = 0;
         for (int h = 0; h < SIZE; h++) {
             if (graph[vert][h] == '#') {
-                tryTwoFive(vert, h);
+                if (two || five) {
+                    tryTwoFive(vert, h);
+                }
             }
         }
 
@@ -41,35 +48,55 @@ public class MultiArray {
     }
 
     public void tryTwoFive(int vert, int hor) {
+        char figure;
+        if (two) {
+            figure = '2';
+        } else if (five) {
+            figure = '5';
+        } else return;
         if ((vert < (SIZE - 1)) && (graph[vert + 1][hor] == '#')) {
             if ((hor < (SIZE - 1)) && (graph[vert + 1][hor + 1] == '#')) {
                 if ((hor < (SIZE - 2)) && (graph[vert + 1][hor + 2] == '#')) {
-                    graph[vert][hor] = '+';
-                    graph[vert + 1][hor] = '+';
-                    graph[vert + 1][hor + 1] = '+';
-                    graph[vert + 1][hor + 2] = '+';
+                    graph[vert][hor] = figure;
+                    graph[vert + 1][hor] = figure;
+                    graph[vert + 1][hor + 1] = figure;
+                    graph[vert + 1][hor + 2] = figure;
+                    unavailable(figure);
                 }
             } else if ((vert < (SIZE - 2) && (graph[vert + 2][hor] == '#'))) {
                 if ((hor > 0) && (graph[vert + 2][hor - 1] == '#')) {
-                    graph[vert][hor] = '+';
-                    graph[vert + 1][hor] = '+';
-                    graph[vert + 2][hor] = '+';
-                    graph[vert + 2][hor - 1] = '+';
+                    graph[vert][hor] = figure;
+                    graph[vert + 1][hor] = figure;
+                    graph[vert + 2][hor] = figure;
+                    graph[vert + 2][hor - 1] = figure;
+                    unavailable(figure);
                 }
                 if ((hor < (SIZE - 1)) && (graph[vert][hor + 1] == '#')) {
-                    graph[vert][hor] = '+';
-                    graph[vert + 1][hor] = '+';
-                    graph[vert + 2][hor] = '+';
-                    graph[vert][hor + 1] = '+';
+                    graph[vert][hor] = figure;
+                    graph[vert + 1][hor] = figure;
+                    graph[vert + 2][hor] = figure;
+                    graph[vert][hor + 1] = figure;
+                    unavailable(figure);
                 }
             }
-        } else if ((hor < SIZE + 2) && (vert < SIZE + 1) && (graph[vert][hor + 1] == '#')
+//        } else if ((hor < SIZE + 2) && (vert < SIZE + 1) && (graph[vert][hor + 1] == '#')
+        } else if ((hor < SIZE - 2) && (vert < SIZE - 1) && (graph[vert][hor + 1] == '#')
                 && (graph[vert][hor + 2] == '#')
                 && (graph[vert + 1][hor + 2] == '#')) {
-            graph[vert][hor] = '+';
-            graph[vert][hor + 1] = '+';
-            graph[vert][hor + 2] = '+';
-            graph[vert + 1][hor + 2] = '+';
+            graph[vert][hor] = figure;
+            graph[vert][hor + 1] = figure;
+            graph[vert][hor + 2] = figure;
+            graph[vert + 1][hor + 2] = figure;
+            unavailable(figure);
+        }
+
+    }
+
+    public void unavailable(char figure) {
+        if (figure == '2') {
+            two = false;
+        } else if (figure == '5') {
+            five = false;
         }
     }
 
