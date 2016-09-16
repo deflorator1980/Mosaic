@@ -24,21 +24,25 @@ public class MultiArray {
 
 
         graph[0][3] = '9';
+        graph[2][2] = '9';
 
 //        graph[2][4] = '+';
 //        graph[2][5] = '+';
 //        graph[3][4] = '+';
 
 
-        int vert = 0;
-        for (int h = 0; h < SIZE; h++) {
-            if (graph[vert][h] == '#') {
-                if (two || five) {
-                    tryTwoFive(vert, h);
+//        int vert = 0;
+        for (int vert = 0; vert < 2; vert++) {
+            for (int h = 0; h < SIZE; h++) {
+                if (graph[vert][h] == '#') {
+                    if (two || five) {
+                        tryTwoFive(vert, h);
+                    } else if (one) {
+                        oneOnly(vert, h);
+                    }
                 }
             }
         }
-
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
                 System.out.print(graph[v][h]);
@@ -92,11 +96,25 @@ public class MultiArray {
 
     }
 
+    public void oneOnly(int vert, int hor) {
+        if (vert < (SIZE - 1) && (hor < SIZE - 1) && (hor > 0)
+                && (graph[vert + 1][hor] == '#') && (graph[vert + 1][hor + 1] == '#')
+                && (graph[vert + 1][hor - 1] == '#')) {
+            graph[vert][hor] = '1';
+            graph[vert + 1][hor] = '1';
+            graph[vert + 1][hor + 1] = '1';
+            graph[vert + 1][hor - 1] = '1';
+            unavailable('1');
+        }
+    }
+
     public void unavailable(char figure) {
         if (figure == '2') {
             two = false;
         } else if (figure == '5') {
             five = false;
+        } else if (figure == '1') {
+            one = false;
         }
     }
 
