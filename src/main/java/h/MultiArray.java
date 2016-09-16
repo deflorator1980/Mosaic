@@ -24,7 +24,7 @@ public class MultiArray {
 
 
         graph[0][3] = '9';
-        graph[2][2] = '9';
+//        graph[2][2] = '9';
 
 //        graph[2][4] = '+';
 //        graph[2][5] = '+';
@@ -97,14 +97,17 @@ public class MultiArray {
     }
 
     public void oneOnly(int vert, int hor) {
-        if (vert < (SIZE - 1) && (hor < SIZE - 1) && (hor > 0)
-                && (graph[vert + 1][hor] == '#') && (graph[vert + 1][hor + 1] == '#')
-                && (graph[vert + 1][hor - 1] == '#')) {
-            graph[vert][hor] = '1';
-            graph[vert + 1][hor] = '1';
-            graph[vert + 1][hor + 1] = '1';
-            graph[vert + 1][hor - 1] = '1';
-            unavailable('1');
+        if (vert < (SIZE - 1) && (graph[vert + 1][hor] == '#') ){
+                if((hor < SIZE - 1)
+                    && (hor > 0)
+                    && (graph[vert + 1][hor + 1] == '#')
+                    && (graph[vert + 1][hor - 1] == '#')){
+                graph[vert][hor] = '1';
+                graph[vert + 1][hor] = '1';
+                graph[vert + 1][hor + 1] = '1';
+                graph[vert + 1][hor - 1] = '1';
+                unavailable('1');
+            }
         }
     }
 
