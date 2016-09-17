@@ -50,28 +50,65 @@ public class MultiArray {
 //        graph[3][4] = '+';
 
 
-//        int vert = 0;
-        for (int vert = 0; vert < SIZE; vert++) {
-            for (int h = 0; h < SIZE; h++) {
-                if (graph[vert][h] == '#') {
-                    if (two || five) {
-                        tryTwoFive(vert, h);
-                    } else if (one) {
-                        tryOne(vert, h);
-                    } else if (three || six) {
-                        tryThreeSix(vert, h);
-                    } else
-                        if (four || seven || eight) {
-                        tryFourSevenEight(vert, h);
-                    }
-                }
-            }
-        }
+//        for (int vert = 0; vert < SIZE; vert++) {
+//            for (int h = 0; h < SIZE; h++) {
+//                if (graph[vert][h] == '#') {
+//                    if (two || five) {
+//                        tryTwoFive(vert, h);
+//                    } else if (one) {
+//                        tryOne(vert, h);
+//                    } else if (three || six) {
+//                        tryThreeSix(vert, h);
+//                    } else
+//                        if (four || seven || eight) {
+//                        tryFourSevenEight(vert, h);
+//                    }
+//                }
+//            }
+//        }
+
+        tryTwoFive();
+        tryOne();
+        tryThreeSix();
+        tryFourSevenEight();
+
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
                 System.out.print(graph[v][h]);
             }
             System.out.println();
+        }
+    }
+
+    public void tryTwoFive() {
+        for (int v = 0; v < SIZE; v++) {
+            for (int h = 0; h < SIZE; h++) {
+                tryTwoFive(v, h);
+            }
+        }
+    }
+
+    public void tryOne() {
+        for (int v = 0; v < SIZE; v++) {
+            for (int h = 0; h < SIZE; h++) {
+                tryOne(v, h);
+            }
+        }
+    }
+
+    public void tryThreeSix() {
+        for (int v = 0; v < SIZE; v++) {
+            for (int h = 0; h < SIZE; h++) {
+                tryThreeSix(v, h);
+            }
+        }
+    }
+
+    public void tryFourSevenEight() {
+        for (int v = 0; v < SIZE; v++) {
+            for (int h = 0; h < SIZE; h++) {
+                tryFourSevenEight(v, h);
+            }
         }
     }
 
@@ -121,6 +158,9 @@ public class MultiArray {
     }
 
     public void tryOne(int vert, int hor) {
+        if (!one) {
+            return;
+        }
         if (vert < (SIZE - 1) && (graph[vert + 1][hor] == '#')) {
             if ((hor < (SIZE - 1))
                     && (hor > 0)
