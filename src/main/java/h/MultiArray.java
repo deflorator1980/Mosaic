@@ -16,7 +16,7 @@ public class MultiArray {
     boolean eight = true;
     boolean a = true;
     boolean b = true;
-
+    boolean nine = true;
 
     public MultiArray() {
         for (int v = 0; v < SIZE; v++) {
@@ -72,9 +72,10 @@ public class MultiArray {
 
         tryTwoFive();
         tryOne();
-//        tryThreeSix();
+        tryThreeSix();
         tryFourSevenEight();
         tryAB();
+        tryNine();
 
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
@@ -126,6 +127,15 @@ public class MultiArray {
             for (int h = 0; h < SIZE; h++) {
                 if (graph[v][h] == '#')
                     tryAB(v, h);
+            }
+        }
+    }
+
+    public void tryNine() {
+        for (int v = 0; v < SIZE; v++) {
+            for (int h = 0; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryNine(v, h);
             }
         }
     }
@@ -326,6 +336,14 @@ public class MultiArray {
         }
     }
 
+    public void tryNine(int vert, int hor) {
+        if (!nine) {
+            return;
+        }
+        graph[vert][hor] = '9';
+        unavailable('9');
+    }
+
     public void unavailable(char figure) {
         if (figure == '2') {
             two = false;
@@ -347,6 +365,8 @@ public class MultiArray {
             a = false;
         } else if (figure == 'b') {
             b = false;
+        } else if (figure == '9') {
+            nine = false;
         }
     }
 
