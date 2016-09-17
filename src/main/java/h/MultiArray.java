@@ -11,6 +11,9 @@ public class MultiArray {
     boolean one = true;
     boolean three = true;
     boolean six = true;
+    boolean four = true;
+    boolean seven = true;
+    boolean eight = true;
 
 
     public MultiArray() {
@@ -20,25 +23,27 @@ public class MultiArray {
             }
         }
 
-        graph[0][0] = '4';
-        graph[1][0] = '4';
-        graph[0][1] = '4';
+//        graph[0][0] = '4';
+//        graph[1][0] = '4';
+//        graph[0][1] = '4';
 
 
-        graph[0][2] = '9';
-        graph[0][3] = '9';
-        graph[0][4] = '9';
-        graph[0][5] = '9';
+        graph[1][1] = '0';
+        graph[2][0] = '0';
+        graph[0][2] = '0';
+        graph[0][3] = '0';
+        graph[0][4] = '0';
+        graph[0][5] = '0';
 
-        graph[1][2] = '9';
-        graph[1][3] = '9';
-        graph[1][4] = '9';
-        graph[1][5] = '9';
+        graph[1][2] = '0';
+        graph[1][3] = '0';
+        graph[1][4] = '0';
+//        graph[1][5] = '0';
 
-        graph[3][4] = '9';
-//        graph[2][2] = '9';
-//        graph[2][0] = '9';
-//        graph[3][1] = '9';
+        graph[3][4] = '0';
+//        graph[2][2] = '0';
+//        graph[2][0] = '0';
+//        graph[3][1] = '0';
 
 //        graph[2][4] = '+';
 //        graph[2][5] = '+';
@@ -51,10 +56,13 @@ public class MultiArray {
                 if (graph[vert][h] == '#') {
                     if (two || five) {
                         tryTwoFive(vert, h);
-//                    } else if (one) {
-//                        tryOne(vert, h);
+                    } else if (one) {
+                        tryOne(vert, h);
                     } else if (three || six) {
                         tryThreeSix(vert, h);
+                    } else
+                        if (four || seven || eight) {
+                        tryFourSevenEight(vert, h);
                     }
                 }
             }
@@ -187,12 +195,47 @@ public class MultiArray {
                 graph[vert][hor + 2] = figure;
                 unavailable(figure);
             } else if ((vert < (SIZE - 2)) && (hor < (SIZE - 1))
-                    &&(graph[vert + 2][hor] == '#')
-                    &&(graph[vert + 2][hor + 1] == '#')) {
+                    && (graph[vert + 2][hor] == '#')
+                    && (graph[vert + 2][hor + 1] == '#')) {
                 graph[vert][hor] = figure;
                 graph[vert + 1][hor] = figure;
                 graph[vert + 2][hor] = figure;
-                graph[vert + 2][hor  + 1] = figure;
+                graph[vert + 2][hor + 1] = figure;
+                unavailable(figure);
+            }
+        }
+    }
+
+    public void tryFourSevenEight(int vert, int hor) {
+        char figure;
+        if (four) {
+            figure = '4';
+        } else if (seven) {
+            figure = '7';
+        } else if (eight) {
+            figure = '8';
+        } else return;
+
+        if ((vert < (SIZE - 1)) && (graph[vert + 1][hor] == '#')) {
+            if ((hor < (SIZE - 1)) && (graph[vert + 1][hor + 1] == '#')) {
+                graph[vert][hor] = figure;
+                graph[vert + 1][hor] = figure;
+                graph[vert + 1][hor + 1] = figure;
+                unavailable(figure);
+            } else if ((hor < (SIZE - 1)) && (graph[vert][hor + 1] == '#')) {
+                graph[vert][hor] = figure;
+                graph[vert + 1][hor] = figure;
+                graph[vert][hor + 1] = figure;
+                unavailable(figure);
+            } else if ((hor > 0) && (graph[vert + 1][hor - 1] == '#')) {
+                graph[vert][hor] = figure;
+                graph[vert + 1][hor] = figure;
+                graph[vert + 1][hor - 1] = figure;
+                unavailable(figure);
+            } else if ((hor > 0) && (graph[vert][hor - 1] == '#')) {
+                graph[vert][hor] = figure;
+                graph[vert + 1][hor] = figure;
+                graph[vert][hor - 1] = figure;
                 unavailable(figure);
             }
         }
@@ -210,6 +253,12 @@ public class MultiArray {
             three = false;
         } else if (figure == '6') {
             six = false;
+        } else if (figure == '4') {
+            four = false;
+        } else if (figure == '7') {
+            seven = false;
+        } else if (figure == '8') {
+            eight = false;
         }
     }
 
