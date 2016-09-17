@@ -23,8 +23,10 @@ public class MultiArray {
         graph[0][1] = '4';
 
 
-        graph[0][3] = '9';
+//        graph[0][3] = '9';
 //        graph[2][2] = '9';
+//        graph[2][0] = '9';
+//        graph[3][1] = '9';
 
 //        graph[2][4] = '+';
 //        graph[2][5] = '+';
@@ -98,7 +100,7 @@ public class MultiArray {
 
     public void oneOnly(int vert, int hor) {
         if (vert < (SIZE - 1) && (graph[vert + 1][hor] == '#') ){
-                if((hor < SIZE - 1)
+                if((hor < (SIZE - 1))
                     && (hor > 0)
                     && (graph[vert + 1][hor + 1] == '#')
                     && (graph[vert + 1][hor - 1] == '#')){
@@ -107,7 +109,34 @@ public class MultiArray {
                 graph[vert + 1][hor + 1] = '1';
                 graph[vert + 1][hor - 1] = '1';
                 unavailable('1');
-            }
+                } else if (hor < (SIZE - 1)
+                        &&(vert < (SIZE -2 ))
+                        &&(graph[vert + 1][hor + 1] == '#')
+                        &&((graph[vert + 2][hor] == '#'))) {
+                    graph[vert][hor] = '1';
+                    graph[vert + 1][hor] = '1';
+                    graph[vert + 2][hor] = '1';
+                    graph[vert + 1][hor + 1] = '1';
+                    unavailable('1');
+                } else if ((hor > 0)
+                        &&(hor < (SIZE - 1))
+                        &&(graph[vert][hor + 1] == '#')
+                        &&(graph[vert][hor - 1] == '#')) {
+                    graph[vert][hor] = '1';
+                    graph[vert + 1][hor] = '1';
+                    graph[vert][hor - 1] = '1';
+                    graph[vert][hor + 1] = '1';
+                    unavailable('1');
+                } else if ((vert < (SIZE -2))
+                        && (hor > 0)
+                        &&(graph[vert + 2][hor] == '#')
+                        &&(graph[vert + 1][hor - 1] == '#')) {
+                    graph[vert][hor] = '1';
+                    graph[vert + 1][hor] = '1';
+                    graph[vert + 1][hor - 1] = '1';
+                    graph[vert + 2][hor] = '1';
+                    unavailable('1');
+                }
         }
     }
 
