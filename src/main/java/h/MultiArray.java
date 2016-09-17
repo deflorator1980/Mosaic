@@ -34,10 +34,11 @@ public class MultiArray {
         graph[0][3] = '0';
         graph[0][4] = '0';
         graph[0][5] = '0';
+//
+//        graph[1][2] = '0';
+//        graph[1][3] = '0';
+//        graph[1][4] = '0';
 
-        graph[1][2] = '0';
-        graph[1][3] = '0';
-        graph[1][4] = '0';
 //        graph[1][5] = '0';
 
         graph[3][4] = '0';
@@ -83,7 +84,8 @@ public class MultiArray {
     public void tryTwoFive() {
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
-                tryTwoFive(v, h);
+                if (graph[v][h] == '#')
+                    tryTwoFive(v, h);
             }
         }
     }
@@ -91,7 +93,9 @@ public class MultiArray {
     public void tryOne() {
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
-                tryOne(v, h);
+                if (graph[v][h] == '#')
+                    tryOne(v, h);
+
             }
         }
     }
@@ -99,7 +103,8 @@ public class MultiArray {
     public void tryThreeSix() {
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
-                tryThreeSix(v, h);
+                if (graph[v][h] == '#')
+                    tryThreeSix(v, h);
             }
         }
     }
@@ -107,7 +112,8 @@ public class MultiArray {
     public void tryFourSevenEight() {
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
-                tryFourSevenEight(v, h);
+                if (graph[v][h] == '#')
+                    tryFourSevenEight(v, h);
             }
         }
     }
