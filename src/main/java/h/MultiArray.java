@@ -14,6 +14,8 @@ public class MultiArray {
     boolean four = true;
     boolean seven = true;
     boolean eight = true;
+    boolean a = true;
+    boolean b = true;
 
 
     public MultiArray() {
@@ -28,12 +30,12 @@ public class MultiArray {
 //        graph[0][1] = '4';
 
 
-        graph[1][1] = '0';
-        graph[2][0] = '0';
-        graph[0][2] = '0';
-        graph[0][3] = '0';
-        graph[0][4] = '0';
-        graph[0][5] = '0';
+//        graph[1][1] = '0';
+//        graph[2][0] = '0';
+//        graph[0][2] = '0';
+//        graph[0][3] = '0';
+//        graph[0][4] = '0';
+//        graph[0][5] = '0';
 //
 //        graph[1][2] = '0';
 //        graph[1][3] = '0';
@@ -70,8 +72,9 @@ public class MultiArray {
 
         tryTwoFive();
         tryOne();
-        tryThreeSix();
+//        tryThreeSix();
         tryFourSevenEight();
+        tryAB();
 
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
@@ -117,6 +120,17 @@ public class MultiArray {
             }
         }
     }
+
+    public void tryAB() {
+        for (int v = 0; v < SIZE; v++) {
+            for (int h = 0; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryAB(v, h);
+            }
+        }
+    }
+
+
 
     public void tryTwoFive(int vert, int hor) {
         char figure;
@@ -287,6 +301,30 @@ public class MultiArray {
         }
     }
 
+    public void tryAB(int vert, int hor) {
+        char figure;
+        if (a) {
+            figure = 'a';
+        } else if (b) {
+            figure = 'b';
+        }else return;
+
+        if ((vert < (SIZE - 2))
+                && (graph[vert + 1][hor] == '#')
+                && (graph[vert + 2][hor] == '#')) {
+            graph[vert][hor] = figure;
+            graph[vert + 1][hor] = figure;
+            graph[vert + 2][hor] = figure;
+            unavailable(figure);
+        } else if ((hor < (SIZE - 2))
+                && (graph[vert][hor + 1] == '#')
+                && (graph[vert][hor + 2] == '#')) {
+            graph[vert][hor] = figure;
+            graph[vert][hor + 1] = figure;
+            graph[vert][hor + 2] = figure;
+            unavailable(figure);
+        }
+    }
 
     public void unavailable(char figure) {
         if (figure == '2') {
@@ -305,6 +343,10 @@ public class MultiArray {
             seven = false;
         } else if (figure == '8') {
             eight = false;
+        } else if (figure == 'a') {
+            a = false;
+        } else if (figure == 'b') {
+            b = false;
         }
     }
 
