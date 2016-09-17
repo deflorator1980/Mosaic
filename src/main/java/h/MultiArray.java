@@ -9,6 +9,8 @@ public class MultiArray {
     boolean two = true;
     boolean five = true;
     boolean one = true;
+    boolean three = true;
+    boolean six = true;
 
 
     public MultiArray() {
@@ -23,7 +25,17 @@ public class MultiArray {
         graph[0][1] = '4';
 
 
-//        graph[0][3] = '9';
+        graph[0][2] = '9';
+        graph[0][3] = '9';
+        graph[0][4] = '9';
+        graph[0][5] = '9';
+
+        graph[1][2] = '9';
+        graph[1][3] = '9';
+        graph[1][4] = '9';
+        graph[1][5] = '9';
+
+        graph[3][4] = '9';
 //        graph[2][2] = '9';
 //        graph[2][0] = '9';
 //        graph[3][1] = '9';
@@ -34,13 +46,15 @@ public class MultiArray {
 
 
 //        int vert = 0;
-        for (int vert = 0; vert < 2; vert++) {
+        for (int vert = 0; vert < SIZE; vert++) {
             for (int h = 0; h < SIZE; h++) {
                 if (graph[vert][h] == '#') {
                     if (two || five) {
                         tryTwoFive(vert, h);
-                    } else if (one) {
-                        oneOnly(vert, h);
+//                    } else if (one) {
+//                        tryOne(vert, h);
+                    } else if (three || six) {
+                        tryThreeSix(vert, h);
                     }
                 }
             }
@@ -86,7 +100,7 @@ public class MultiArray {
                 }
             }
 //        } else if ((hor < SIZE + 2) && (vert < SIZE + 1) && (graph[vert][hor + 1] == '#')
-        } else if ((hor < SIZE - 2) && (vert < SIZE - 1) && (graph[vert][hor + 1] == '#')
+        } else if ((hor < (SIZE - 2)) && (vert < (SIZE - 1)) && (graph[vert][hor + 1] == '#')
                 && (graph[vert][hor + 2] == '#')
                 && (graph[vert + 1][hor + 2] == '#')) {
             graph[vert][hor] = figure;
@@ -98,47 +112,92 @@ public class MultiArray {
 
     }
 
-    public void oneOnly(int vert, int hor) {
-        if (vert < (SIZE - 1) && (graph[vert + 1][hor] == '#') ){
-                if((hor < (SIZE - 1))
+    public void tryOne(int vert, int hor) {
+        if (vert < (SIZE - 1) && (graph[vert + 1][hor] == '#')) {
+            if ((hor < (SIZE - 1))
                     && (hor > 0)
                     && (graph[vert + 1][hor + 1] == '#')
-                    && (graph[vert + 1][hor - 1] == '#')){
+                    && (graph[vert + 1][hor - 1] == '#')) {
                 graph[vert][hor] = '1';
                 graph[vert + 1][hor] = '1';
                 graph[vert + 1][hor + 1] = '1';
                 graph[vert + 1][hor - 1] = '1';
                 unavailable('1');
-                } else if (hor < (SIZE - 1)
-                        &&(vert < (SIZE -2 ))
-                        &&(graph[vert + 1][hor + 1] == '#')
-                        &&((graph[vert + 2][hor] == '#'))) {
-                    graph[vert][hor] = '1';
-                    graph[vert + 1][hor] = '1';
-                    graph[vert + 2][hor] = '1';
-                    graph[vert + 1][hor + 1] = '1';
-                    unavailable('1');
-                } else if ((hor > 0)
-                        &&(hor < (SIZE - 1))
-                        &&(graph[vert][hor + 1] == '#')
-                        &&(graph[vert][hor - 1] == '#')) {
-                    graph[vert][hor] = '1';
-                    graph[vert + 1][hor] = '1';
-                    graph[vert][hor - 1] = '1';
-                    graph[vert][hor + 1] = '1';
-                    unavailable('1');
-                } else if ((vert < (SIZE -2))
-                        && (hor > 0)
-                        &&(graph[vert + 2][hor] == '#')
-                        &&(graph[vert + 1][hor - 1] == '#')) {
-                    graph[vert][hor] = '1';
-                    graph[vert + 1][hor] = '1';
-                    graph[vert + 1][hor - 1] = '1';
-                    graph[vert + 2][hor] = '1';
-                    unavailable('1');
-                }
+            } else if (hor < (SIZE - 1)
+                    && (vert < (SIZE - 2))
+                    && (graph[vert + 1][hor + 1] == '#')
+                    && ((graph[vert + 2][hor] == '#'))) {
+                graph[vert][hor] = '1';
+                graph[vert + 1][hor] = '1';
+                graph[vert + 2][hor] = '1';
+                graph[vert + 1][hor + 1] = '1';
+                unavailable('1');
+            } else if ((hor > 0)
+                    && (hor < (SIZE - 1))
+                    && (graph[vert][hor + 1] == '#')
+                    && (graph[vert][hor - 1] == '#')) {
+                graph[vert][hor] = '1';
+                graph[vert + 1][hor] = '1';
+                graph[vert][hor - 1] = '1';
+                graph[vert][hor + 1] = '1';
+                unavailable('1');
+            } else if ((vert < (SIZE - 2))
+                    && (hor > 0)
+                    && (graph[vert + 2][hor] == '#')
+                    && (graph[vert + 1][hor - 1] == '#')) {
+                graph[vert][hor] = '1';
+                graph[vert + 1][hor] = '1';
+                graph[vert + 1][hor - 1] = '1';
+                graph[vert + 2][hor] = '1';
+                unavailable('1');
+            }
         }
     }
+
+    public void tryThreeSix(int vert, int hor) {
+        char figure;
+        if (three) {
+            figure = '3';
+        } else if (six) {
+            figure = '6';
+        } else return;
+        if ((vert < (SIZE - 1) && (graph[vert + 1][hor] == '#'))) {
+            if ((hor > 1)
+                    && (graph[vert + 1][hor - 2] == '#')
+                    && (graph[vert + 1][hor - 1] == '#')) {
+                graph[vert][hor] = figure;
+                graph[vert + 1][hor] = figure;
+                graph[vert + 1][hor - 2] = figure;
+                graph[vert + 1][hor - 1] = figure;
+                unavailable(figure);
+            } else if ((vert < (SIZE - 2)) && (hor > 0)
+                    && (graph[vert + 2][hor] == '#')
+                    && (graph[vert][hor - 1] == '#')) {
+                graph[vert][hor] = figure;
+                graph[vert + 1][hor] = figure;
+                graph[vert + 2][hor] = figure;
+                graph[vert][hor - 1] = figure;
+                unavailable(figure);
+            } else if (hor < (SIZE - 2)
+                    && (graph[vert][hor + 1] == '#')
+                    && (graph[vert][hor + 2] == '#')) {
+                graph[vert][hor] = figure;
+                graph[vert + 1][hor] = figure;
+                graph[vert][hor + 1] = figure;
+                graph[vert][hor + 2] = figure;
+                unavailable(figure);
+            } else if ((vert < (SIZE - 2)) && (hor < (SIZE - 1))
+                    &&(graph[vert + 2][hor] == '#')
+                    &&(graph[vert + 2][hor + 1] == '#')) {
+                graph[vert][hor] = figure;
+                graph[vert + 1][hor] = figure;
+                graph[vert + 2][hor] = figure;
+                graph[vert + 2][hor  + 1] = figure;
+                unavailable(figure);
+            }
+        }
+    }
+
 
     public void unavailable(char figure) {
         if (figure == '2') {
@@ -147,6 +206,10 @@ public class MultiArray {
             five = false;
         } else if (figure == '1') {
             one = false;
+        } else if (figure == '3') {
+            three = false;
+        } else if (figure == '6') {
+            six = false;
         }
     }
 
