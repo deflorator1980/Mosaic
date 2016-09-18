@@ -56,27 +56,27 @@ public class MultiArray {
 
 
 
-//        Map<Integer, Integer> coords = new HashMap<>();
-//        coords.put(2, 4);
-//        coords.put(3, 5);
+        Map<Integer, Integer> coords = new HashMap<>();
+        coords.put(2, 4);
+        coords.put(3, 5);
 //        plyaersConfig(0, coords);
-//        plyaersConfig('a', coords);
-
-//        tryTwoFive();
-//        tryOne();
-//        tryThreeSix();
-//        tryFourSevenEight();
-//        tryAB();
-//        tryNine();
-
-
-//        for (int v = 0; v < SIZE; v++) {
-//            for (int h = 0; h < SIZE; h++) {
-//                System.out.print(graph[v][h]);
-//            }
-//            System.out.println();
-//        }
-//        availability();
+        plyaersConfig('a', coords);
+//
+        tryTwoFive();
+        tryOne();
+        tryThreeSix();
+        tryFourSevenEight();
+        tryAB();
+        tryNine();
+//
+//
+        for (int v = 0; v < SIZE; v++) {
+            for (int h = 0; h < SIZE; h++) {
+                System.out.print(graph[v][h]);
+            }
+            System.out.println();
+        }
+        availability();
 
 
     }
