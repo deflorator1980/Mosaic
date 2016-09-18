@@ -1,5 +1,7 @@
 package h;
 
+import java.util.*;
+
 /**
  * Created by a on 16.09.16.
  */
@@ -43,7 +45,7 @@ public class MultiArray {
 
 //        graph[1][5] = '0';
 
-        graph[3][4] = '0';
+//        graph[3][4] = '0';
 //        graph[2][2] = '0';
 //        graph[2][0] = '0';
 //        graph[3][1] = '0';
@@ -54,13 +56,19 @@ public class MultiArray {
 
 
 
+        Map<Integer, Integer> coords = new HashMap<>();
+        coords.put(2, 4);
+        coords.put(3, 5);
+//        plyaersConfig(0, coords);
+        plyaersConfig('a', coords);
 
-        tryTwoFive();
-        tryOne();
-        tryThreeSix();
-        tryFourSevenEight();
-        tryAB();
-        tryNine();
+//        tryTwoFive();
+//        tryOne();
+//        tryThreeSix();
+//        tryFourSevenEight();
+//        tryAB();
+//        tryNine();
+
 
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
@@ -68,6 +76,28 @@ public class MultiArray {
             }
             System.out.println();
         }
+        availability();
+
+
+    }
+
+//    public void plyaersConfig(int figNum, Map<Integer, Integer> coords) {
+    public void plyaersConfig(char figure, Map<Integer, Integer> coords) {
+//        char fig = (char) (figNum + '0');
+        for (int key : coords.keySet()) {
+//            graph[key][coords.get(key)] = (char)(figNum + '0');
+            graph[key][coords.get(key)] = figure;
+            System.out.println(key + " " + coords.get(key));
+        }
+        unavailable(figure);
+    }
+
+    public List<Boolean> availability() {
+        List<Boolean> figures = Arrays.asList(one,two, three, four,five,six,seven,eight, nine, a, b);
+        for (boolean fig : figures) {
+            System.out.println(fig);
+        }
+        return null;
     }
 
     public void tryTwoFive() {
