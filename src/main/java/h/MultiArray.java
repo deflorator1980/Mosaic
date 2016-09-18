@@ -1,13 +1,15 @@
 package h;
 
+import dao.Game;
+
 import java.util.*;
 
 /**
  * Created by a on 16.09.16.
  */
 public class MultiArray {
-    int SIZE = 6;
-    char[][] graph = new char[SIZE][SIZE];
+    static int SIZE = 6;
+    static char[][] graph = new char[SIZE][SIZE];
     boolean two = true;
     boolean five = true;
     boolean one = true;
@@ -21,11 +23,12 @@ public class MultiArray {
     boolean nine = true;
 
     public MultiArray() {
-        for (int v = 0; v < SIZE; v++) {
-            for (int h = 0; h < SIZE; h++) {
-                graph[v][h] = '#';
-            }
-        }
+//        for (int v = 0; v < SIZE; v++) {
+//            for (int h = 0; h < SIZE; h++) {
+//                graph[v][h] = '#';
+//            }
+//        }
+
 
 //        graph[0][0] = '4';
 //        graph[1][0] = '4';
@@ -55,44 +58,53 @@ public class MultiArray {
 //        graph[3][4] = '+';
 
 
-
-        Map<Integer, Integer> coords = new HashMap<>();
-        coords.put(2, 4);
-        coords.put(3, 5);
-//        plyaersConfig(0, coords);
-        plyaersConfig('a', coords);
+//        Game game = new Game();
+//        Map<Integer, Integer> coords = new HashMap<>();
+//        coords.put(2, 4);
+//        coords.put(3, 5);
+////        plyaersConfig(0, coords);
 //
-        tryTwoFive();
-        tryOne();
-        tryThreeSix();
-        tryFourSevenEight();
-        tryAB();
-        tryNine();
-//
-//
-        for (int v = 0; v < SIZE; v++) {
-            for (int h = 0; h < SIZE; h++) {
-                System.out.print(graph[v][h]);
-            }
-            System.out.println();
-        }
-        availability();
+//        plyaersConfig(new Game('a', coords));
+////
+//        tryTwoFive();
+//        tryOne();
+//        tryThreeSix();
+//        tryFourSevenEight();
+//        tryAB();
+//        tryNine();
+////
+////
+//        for (int v = 0; v < SIZE; v++) {
+//            for (int h = 0; h < SIZE; h++) {
+//                System.out.print(graph[v][h]);
+//            }
+//            System.out.println();
+//        }
+//        availability();
 
 
     }
 
-    public void plyaersConfig(char figure, Map<Integer, Integer> coords) {
-        for (int key : coords.keySet()) {
-            graph[key][coords.get(key)] = figure;
-            System.out.println(key + " " + coords.get(key));
+    public void plyaersConfig(Game game) {
+        for (int key : game.getCoordinates().keySet()) {
+            graph[key][game.getCoordinates().get(key)] = game.getFigure();
+//            System.out.println(key + " " + game.getCoordinates().get(key));
         }
-        unavailable(figure);
+        unavailable(game.getFigure());
     }
+
+//    public void plyaersConfig(char figure, Map<Integer, Integer> coords) {
+//        for (int key : coords.keySet()) {
+//            graph[key][coords.get(key)] = figure;
+//            System.out.println(key + " " + coords.get(key));
+//        }
+//        unavailable(figure);
+//    }
 
     public void availability() {
         List<Boolean> figures = Arrays.asList(one,two, three, four,five,six,seven,eight, nine, a, b);
         for (boolean fig : figures) {
-            System.out.println(fig);
+//            System.out.println(fig);
         }
     }
 
@@ -382,6 +394,5 @@ public class MultiArray {
 
     public static void main(String[] args) {
         new MultiArray();
-        System.out.println("ebatsa");
     }
 }
