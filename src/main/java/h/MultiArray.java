@@ -53,22 +53,7 @@ public class MultiArray {
 //        graph[3][4] = '+';
 
 
-//        for (int vert = 0; vert < SIZE; vert++) {
-//            for (int h = 0; h < SIZE; h++) {
-//                if (graph[vert][h] == '#') {
-//                    if (two || five) {
-//                        tryTwoFive(vert, h);
-//                    } else if (one) {
-//                        tryOne(vert, h);
-//                    } else if (three || six) {
-//                        tryThreeSix(vert, h);
-//                    } else
-//                        if (four || seven || eight) {
-//                        tryFourSevenEight(vert, h);
-//                    }
-//                }
-//            }
-//        }
+
 
         tryTwoFive();
         tryOne();
@@ -174,7 +159,6 @@ public class MultiArray {
                     unavailable(figure);
                 }
             }
-//        } else if ((hor < SIZE + 2) && (vert < SIZE + 1) && (graph[vert][hor + 1] == '#')
         } else if ((hor < (SIZE - 2)) && (vert < (SIZE - 1)) && (graph[vert][hor + 1] == '#')
                 && (graph[vert][hor + 2] == '#')
                 && (graph[vert + 1][hor + 2] == '#')) {
