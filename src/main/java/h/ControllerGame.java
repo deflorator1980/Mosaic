@@ -1,9 +1,7 @@
 package h;
 
 import dao.Game;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,9 +23,19 @@ public class ControllerGame {
         return new Game('1', coords);
     }
 
-//    @RequestMapping("/move")
-//    public Game move(@RequestParam(value = "figure") Character fig) {
-//
-//    }
+    @RequestMapping(value = "/move", method = RequestMethod.POST)
+    public Game move(@RequestParam("figure") Character fig, @RequestParam("coordinates") Integer coord) {
+        Map<Integer, Integer> coords = new HashMap<>();
+        coords.put(coord, coord);
+        return new Game('1', coords);
+    }
+
+    @RequestMapping(value = "/move2", method = RequestMethod.POST)
+    public Game move2(@RequestBody Game game) {
+//        Map<Integer, Integer> coords = new HashMap<>();
+//        coords.put(val, val);
+//        return new Game('1', coords);
+        return new Game(game.getFigure(), game.getCoordinates());
+    }
 
 }
