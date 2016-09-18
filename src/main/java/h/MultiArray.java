@@ -56,11 +56,11 @@ public class MultiArray {
 
 
 
-        Map<Integer, Integer> coords = new HashMap<>();
-        coords.put(2, 4);
-        coords.put(3, 5);
+//        Map<Integer, Integer> coords = new HashMap<>();
+//        coords.put(2, 4);
+//        coords.put(3, 5);
 //        plyaersConfig(0, coords);
-        plyaersConfig('a', coords);
+//        plyaersConfig('a', coords);
 
 //        tryTwoFive();
 //        tryOne();
@@ -70,34 +70,30 @@ public class MultiArray {
 //        tryNine();
 
 
-        for (int v = 0; v < SIZE; v++) {
-            for (int h = 0; h < SIZE; h++) {
-                System.out.print(graph[v][h]);
-            }
-            System.out.println();
-        }
-        availability();
+//        for (int v = 0; v < SIZE; v++) {
+//            for (int h = 0; h < SIZE; h++) {
+//                System.out.print(graph[v][h]);
+//            }
+//            System.out.println();
+//        }
+//        availability();
 
 
     }
 
-//    public void plyaersConfig(int figNum, Map<Integer, Integer> coords) {
     public void plyaersConfig(char figure, Map<Integer, Integer> coords) {
-//        char fig = (char) (figNum + '0');
         for (int key : coords.keySet()) {
-//            graph[key][coords.get(key)] = (char)(figNum + '0');
             graph[key][coords.get(key)] = figure;
             System.out.println(key + " " + coords.get(key));
         }
         unavailable(figure);
     }
 
-    public List<Boolean> availability() {
+    public void availability() {
         List<Boolean> figures = Arrays.asList(one,two, three, four,five,six,seven,eight, nine, a, b);
         for (boolean fig : figures) {
             System.out.println(fig);
         }
-        return null;
     }
 
     public void tryTwoFive() {
@@ -386,5 +382,6 @@ public class MultiArray {
 
     public static void main(String[] args) {
         new MultiArray();
+        System.out.println("ebatsa");
     }
 }
