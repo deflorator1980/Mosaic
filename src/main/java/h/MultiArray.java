@@ -1,6 +1,7 @@
 package h;
 
 import dao.Game;
+import dao.Game2;
 
 import java.util.*;
 
@@ -91,6 +92,11 @@ public class MultiArray {
 //            System.out.println(key + " " + game.getCoordinates().get(key));
         }
         unavailable(game.getFigure());
+    }
+
+    public void playersConfig2(Game2 game2) {
+        graph[game2.getXy().getVert()][game2.getXy().getHor()] = game2.getFigure();
+        unavailable(game2.getFigure());
     }
 
 //    public void plyaersConfig(char figure, Map<Integer, Integer> coords) {
