@@ -2,6 +2,7 @@ package h;
 
 import dao.Coordinates;
 import dao.Figure;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -12,6 +13,7 @@ import java.util.*;
 @Repository
 public class MultiArray {
     static int SIZE = 6;
+//    static char[][] graph = new char[SIZE][SIZE];
     static char[][] graph = new char[SIZE][SIZE];
     boolean two = true;
     boolean five = true;
@@ -40,7 +42,7 @@ public class MultiArray {
         }
     }
 
-    public int freePlaces() {
+    public int countFreePlaces() {
         int count = 0;
         MultiArray multiArray = new MultiArray();
         for (int v = 0; v < SIZE; v++) {

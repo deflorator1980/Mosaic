@@ -15,18 +15,12 @@ import static h.MultiArray.graph;
 @RestController
 public class ControllerGame {
 
-    @Autowired
-    MultiArray multiArray;
-
     @RequestMapping(value = "/response", method = RequestMethod.POST)
     public Result response(@RequestBody Input input) {
-//        MultiArray multiArray = new MultiArray();
-//        for (int v = 0; v < SIZE; v++) {
-//            for (int h = 0; h < SIZE; h++) {
-//                graph[v][h] = '#';
-//            }
-//        }
+        MultiArray multiArray = new MultiArray();
+
         multiArray.prepareField();
+
 //        for (Figure game : input.getTetrominos()) {
 //            multiArray.playersConfig(game);
 //        }
@@ -49,7 +43,6 @@ public class ControllerGame {
 //        for (int h = 0; h < SIZE; h++) {
 //            abc0[h] = graph[0][h];
 //        }
-
         System.arraycopy(graph[0], 0, abc0, 0, SIZE);
         System.arraycopy(graph[1], 0, abc1, 0, SIZE);
         System.arraycopy(graph[2], 0, abc2, 0, SIZE);
