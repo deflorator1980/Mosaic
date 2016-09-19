@@ -86,26 +86,12 @@ public class MultiArray {
 
     }
 
-    public void plyaersConfig(Game game) {
-        for (int key : game.getCoordinates().keySet()) {
-            graph[key][game.getCoordinates().get(key)] = game.getFigure();
-//            System.out.println(key + " " + game.getCoordinates().get(key));
-        }
-        unavailable(game.getFigure());
-    }
 
     public void playersConfig2(Game2 game2) {
         graph[game2.getXy().getVert()][game2.getXy().getHor()] = game2.getFigure();
         unavailable(game2.getFigure());
     }
 
-//    public void plyaersConfig(char figure, Map<Integer, Integer> coords) {
-//        for (int key : coords.keySet()) {
-//            graph[key][coords.get(key)] = figure;
-//            System.out.println(key + " " + coords.get(key));
-//        }
-//        unavailable(figure);
-//    }
 
     public void availability() {
         List<Boolean> figures = Arrays.asList(one,two, three, four,five,six,seven,eight, nine, a, b);
