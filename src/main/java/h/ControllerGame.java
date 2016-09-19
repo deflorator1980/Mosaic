@@ -22,8 +22,6 @@ import static h.MultiArray.graph;
 @RestController
 public class ControllerGame {
 
-    private final AtomicInteger counter = new AtomicInteger();
-
     @RequestMapping(value = "/response", method = RequestMethod.POST)
     public Result response(@RequestBody Input input) {
         MultiArray multiArray = new MultiArray();
@@ -67,7 +65,7 @@ public class ControllerGame {
     public Result multiRnd() {
         TreeMap<Integer, Result> resultsCollection = new TreeMap<>();
         Result result;
-        while (counter.incrementAndGet() < 1000) {
+        for (int i = 0; i < 1000; i++) {
             result = rnd();
             if (result != null) {
                 resultsCollection.put(result.getFreePlaces(), result);
