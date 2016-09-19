@@ -1,6 +1,7 @@
 package h;
 
 import dao.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,15 +15,18 @@ import static h.MultiArray.graph;
 @RestController
 public class ControllerGame {
 
+    @Autowired
+    MultiArray multiArray;
+
     @RequestMapping(value = "/response", method = RequestMethod.POST)
     public Result response(@RequestBody Input input) {
-        MultiArray multiArray = new MultiArray();
-        for (int v = 0; v < SIZE; v++) {
-            for (int h = 0; h < SIZE; h++) {
-                graph[v][h] = '#';
-            }
-        }
-
+//        MultiArray multiArray = new MultiArray();
+//        for (int v = 0; v < SIZE; v++) {
+//            for (int h = 0; h < SIZE; h++) {
+//                graph[v][h] = '#';
+//            }
+//        }
+        multiArray.prepareField();
 //        for (Figure game : input.getTetrominos()) {
 //            multiArray.playersConfig(game);
 //        }

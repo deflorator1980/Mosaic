@@ -32,6 +32,24 @@ public class MultiArray {
         unavailable(figure.getFigure());
     }
 
+    public void prepareField() {
+        for (int v = 0; v < SIZE; v++) {
+            for (int h = 0; h < SIZE; h++) {
+                graph[v][h] = '#';
+            }
+        }
+    }
+
+    public int freePlaces() {
+        int count = 0;
+        MultiArray multiArray = new MultiArray();
+        for (int v = 0; v < SIZE; v++) {
+            for (int h = 0; h < SIZE; h++) {
+                if(graph[v][h] == '#') count++;
+            }
+        }
+        return count;
+    }
 
     public void availability() {
         List<Boolean> figures = Arrays.asList(one, two, three, four, five, six, seven, eight, nine, a, b);
