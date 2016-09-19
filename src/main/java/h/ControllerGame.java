@@ -1,6 +1,7 @@
 package h;
 
 import dao.*;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import static h.MultiArray.SIZE;
@@ -9,6 +10,7 @@ import static h.MultiArray.graph;
 /**
  * Created by a on 18.09.16.
  */
+@Repository
 @RestController
 public class ControllerGame {
 
@@ -21,7 +23,7 @@ public class ControllerGame {
             }
         }
 
-//        for (Game game : input.getTetrominos()) {
+//        for (Figure game : input.getTetrominos()) {
 //            multiArray.playersConfig(game);
 //        }
         input.getTetrominos().forEach(multiArray::playersConfig);

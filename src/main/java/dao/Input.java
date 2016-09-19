@@ -13,5 +13,5 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Input {
-    List<Game> tetrominos;
+    List<Figure> tetrominos;
 }

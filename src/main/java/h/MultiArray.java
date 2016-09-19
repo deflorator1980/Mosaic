@@ -1,7 +1,7 @@
 package h;
 
 import dao.Coordinates;
-import dao.Game;
+import dao.Figure;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -25,11 +25,11 @@ public class MultiArray {
     boolean b = true;
     boolean nine = true;
 
-    public void playersConfig(Game game) {
-        for (Coordinates coordinates : game.getXy()) {
-            graph[coordinates.getVert()][coordinates.getHor()] = game.getFigure();
+    public void playersConfig(Figure figure) {
+        for (Coordinates coordinates : figure.getXy()) {
+            graph[coordinates.getVert()][coordinates.getHor()] = figure.getFigure();
         }
-        unavailable(game.getFigure());
+        unavailable(figure.getFigure());
     }
 
 

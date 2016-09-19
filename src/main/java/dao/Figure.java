@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Game {
+public class Figure {
     private Character figure;
     private List<Coordinates> xy;
 
