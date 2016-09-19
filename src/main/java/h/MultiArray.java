@@ -2,12 +2,14 @@ package h;
 
 import dao.Coordinates;
 import dao.Game;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 /**
  * Created by a on 16.09.16.
  */
+@Repository
 public class MultiArray {
     static int SIZE = 6;
     static char[][] graph = new char[SIZE][SIZE];
@@ -34,7 +36,7 @@ public class MultiArray {
     public void availability() {
         List<Boolean> figures = Arrays.asList(one, two, three, four, five, six, seven, eight, nine, a, b);
         for (boolean fig : figures) {
-//            System.out.println(fig);
+            System.out.println(fig);
         }
     }
 
