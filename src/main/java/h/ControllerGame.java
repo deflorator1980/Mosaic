@@ -5,7 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Random;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static h.MultiArray.SIZE;
@@ -18,7 +22,7 @@ import static h.MultiArray.graph;
 @RestController
 public class ControllerGame {
 
-    private final AtomicLong counter = new AtomicLong();
+    private final AtomicInteger counter = new AtomicInteger();
 
     @RequestMapping(value = "/response", method = RequestMethod.POST)
     public Result response(@RequestBody Input input) {
@@ -57,6 +61,22 @@ public class ControllerGame {
         multiArray.tryNineRnd(rnd.nextInt(6), rnd.nextInt(6));
         return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5], multiArray.countFreePlaces());
 
+    }
+
+    @RequestMapping(value = "/multirnd", method = RequestMethod.POST)
+    public Result multiRnd() {
+        TreeMap<Integer, Result> resultsCollection = new TreeMap<>();
+        Result result;
+        while (counter.incrementAndGet() < 1000) {
+            result = rnd();
+            if (result != null) {
+                resultsCollection.put(result.getFreePlaces(), result);
+                if (result.getFreePlaces() == 0) {
+                    return result;
+                }
+            }
+        }
+        return resultsCollection.get(resultsCollection.firstKey());
     }
 
 }
