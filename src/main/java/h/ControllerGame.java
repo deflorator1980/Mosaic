@@ -44,11 +44,14 @@ public class ControllerGame {
         return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5], multiArray.countFreePlaces());
     }
 
-    @RequestMapping(value = "/rnd", method = RequestMethod.POST)
-    public Result rnd() {
+//    @RequestMapping(value = "/rnd", method = RequestMethod.POST)
+//    public Result rnd() {
+    public Result rnd(Input input) {
         MultiArray multiArray = new MultiArray();
 
         multiArray.prepareField();
+
+        input.getTetrominos().forEach(multiArray::playersConfig);
 
         Random rnd = new Random();
         multiArray.tryTwoFiveRnd(rnd.nextInt(6), rnd.nextInt(6));
@@ -62,11 +65,11 @@ public class ControllerGame {
     }
 
     @RequestMapping(value = "/multirnd", method = RequestMethod.POST)
-    public Result multiRnd() {
+    public Result multiRnd(@RequestBody Input input) {
         TreeMap<Integer, Result> resultsCollection = new TreeMap<>();
         Result result;
         for (int i = 0; i < 1000; i++) {
-            result = rnd();
+            result = rnd(input);
             if (result != null) {
                 resultsCollection.put(result.getFreePlaces(), result);
                 if (result.getFreePlaces() == 0) {
