@@ -3,11 +3,6 @@ package h;
 import dao.*;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import static h.MultiArray.SIZE;
 import static h.MultiArray.graph;
 
@@ -26,9 +21,10 @@ public class ControllerGame {
             }
         }
 
-        for (Game game : input.getTetrominos()) {
-            multiArray.playersConfig(game);
-        }
+//        for (Game game : input.getTetrominos()) {
+//            multiArray.playersConfig(game);
+//        }
+        input.getTetrominos().forEach(multiArray::playersConfig);
 
         multiArray.tryTwoFive();
         multiArray.tryOne();
@@ -44,24 +40,16 @@ public class ControllerGame {
         char[] abc4 = new char[SIZE];
         char[] abc5 = new char[SIZE];
 
-        for (int h = 0; h < SIZE; h++) {
-            abc0[h] = graph[0][h];
-        }
-        for (int h = 0; h < SIZE; h++) {
-            abc1[h] = graph[1][h];
-        }
-        for (int h = 0; h < SIZE; h++) {
-            abc2[h] = graph[2][h];
-        }
-        for (int h = 0; h < SIZE; h++) {
-            abc3[h] = graph[3][h];
-        }
-        for (int h = 0; h < SIZE; h++) {
-            abc4[h] = graph[4][h];
-        }
-        for (int h = 0; h < SIZE; h++) {
-            abc5[h] = graph[5][h];
-        }
+//        for (int h = 0; h < SIZE; h++) {
+//            abc0[h] = graph[0][h];
+//        }
+
+        System.arraycopy(graph[0], 0, abc0, 0, SIZE);
+        System.arraycopy(graph[1], 0, abc1, 0, SIZE);
+        System.arraycopy(graph[2], 0, abc2, 0, SIZE);
+        System.arraycopy(graph[3], 0, abc3, 0, SIZE);
+        System.arraycopy(graph[4], 0, abc4, 0, SIZE);
+        System.arraycopy(graph[5], 0, abc5, 0, SIZE);
 
         return new Result(abc0, abc1, abc2, abc3, abc4, abc5);
     }
