@@ -2,7 +2,6 @@ package h;
 
 import dao.Coordinates;
 import dao.Game;
-import dao.Game2;
 
 import java.util.*;
 
@@ -24,75 +23,6 @@ public class MultiArray {
     boolean b = true;
     boolean nine = true;
 
-    public MultiArray() {
-//        for (int v = 0; v < SIZE; v++) {
-//            for (int h = 0; h < SIZE; h++) {
-//                graph[v][h] = '#';
-//            }
-//        }
-
-
-//        graph[0][0] = '4';
-//        graph[1][0] = '4';
-//        graph[0][1] = '4';
-
-
-//        graph[1][1] = '0';
-//        graph[2][0] = '0';
-//        graph[0][2] = '0';
-//        graph[0][3] = '0';
-//        graph[0][4] = '0';
-//        graph[0][5] = '0';
-//
-//        graph[1][2] = '0';
-//        graph[1][3] = '0';
-//        graph[1][4] = '0';
-
-//        graph[1][5] = '0';
-
-//        graph[3][4] = '0';
-//        graph[2][2] = '0';
-//        graph[2][0] = '0';
-//        graph[3][1] = '0';
-
-//        graph[2][4] = '+';
-//        graph[2][5] = '+';
-//        graph[3][4] = '+';
-
-
-//        Game game = new Game();
-//        Map<Integer, Integer> coords = new HashMap<>();
-//        coords.put(2, 4);
-//        coords.put(3, 5);
-////        plyaersConfig(0, coords);
-//
-//        plyaersConfig(new Game('a', coords));
-////
-//        tryTwoFive();
-//        tryOne();
-//        tryThreeSix();
-//        tryFourSevenEight();
-//        tryAB();
-//        tryNine();
-////
-////
-//        for (int v = 0; v < SIZE; v++) {
-//            for (int h = 0; h < SIZE; h++) {
-//                System.out.print(graph[v][h]);
-//            }
-//            System.out.println();
-//        }
-//        availability();
-
-
-    }
-
-
-    public void playersConfig2(Game2 game2) {
-        graph[game2.getXy().getVert()][game2.getXy().getHor()] = game2.getFigure();
-        unavailable(game2.getFigure());
-    }
-
     public void playersConfig(Game game) {
         for (Coordinates coordinates : game.getXy()) {
             graph[coordinates.getVert()][coordinates.getHor()] = game.getFigure();
@@ -102,7 +32,7 @@ public class MultiArray {
 
 
     public void availability() {
-        List<Boolean> figures = Arrays.asList(one,two, three, four,five,six,seven,eight, nine, a, b);
+        List<Boolean> figures = Arrays.asList(one, two, three, four, five, six, seven, eight, nine, a, b);
         for (boolean fig : figures) {
 //            System.out.println(fig);
         }
@@ -162,7 +92,6 @@ public class MultiArray {
             }
         }
     }
-
 
 
     public void tryTwoFive(int vert, int hor) {
@@ -339,7 +268,7 @@ public class MultiArray {
             figure = 'a';
         } else if (b) {
             figure = 'b';
-        }else return;
+        } else return;
 
         if ((vert < (SIZE - 2))
                 && (graph[vert + 1][hor] == '#')
@@ -392,7 +321,4 @@ public class MultiArray {
         }
     }
 
-    public static void main(String[] args) {
-        new MultiArray();
-    }
 }
