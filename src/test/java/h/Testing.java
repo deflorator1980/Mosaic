@@ -11,7 +11,6 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -71,7 +70,6 @@ public class Testing {
                 new Coordinates(3, 4)));
 
         Input input = new Input(Arrays.asList(figure, figure2));
-
 
         assertEquals(result, controllerGame.response(input));
     }

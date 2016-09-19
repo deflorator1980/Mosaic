@@ -35,9 +35,7 @@ public class MultiArray {
 
     public void availability() {
         List<Boolean> figures = Arrays.asList(one, two, three, four, five, six, seven, eight, nine, a, b);
-        for (boolean fig : figures) {
-            System.out.println(fig);
-        }
+        figures.forEach(System.out::println);
     }
 
     public void tryTwoFive() {
