@@ -55,6 +55,8 @@ public class Testing {
         char[] line5 = l5.toCharArray();
         result.setLine5(line5);
 
+        result.setFreePlaces(0);
+
         Figure figure = new Figure();
         figure.setFigure('4');
         figure.setXy(Arrays.asList(

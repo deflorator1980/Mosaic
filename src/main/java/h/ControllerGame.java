@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 import static h.MultiArray.SIZE;
 import static h.MultiArray.graph;
 
@@ -14,6 +16,8 @@ import static h.MultiArray.graph;
 @Repository
 @RestController
 public class ControllerGame {
+
+    private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping(value = "/response", method = RequestMethod.POST)
     public Result response(@RequestBody Input input) {
@@ -40,17 +44,7 @@ public class ControllerGame {
         char[] abc4 = new char[SIZE];
         char[] abc5 = new char[SIZE];
 
-//        for (int h = 0; h < SIZE; h++) {
-//            abc0[h] = graph[0][h];
-//        }
-        System.arraycopy(graph[0], 0, abc0, 0, SIZE);
-        System.arraycopy(graph[1], 0, abc1, 0, SIZE);
-        System.arraycopy(graph[2], 0, abc2, 0, SIZE);
-        System.arraycopy(graph[3], 0, abc3, 0, SIZE);
-        System.arraycopy(graph[4], 0, abc4, 0, SIZE);
-        System.arraycopy(graph[5], 0, abc5, 0, SIZE);
-
-        return new Result(abc0, abc1, abc2, abc3, abc4, abc5);
+        return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5], multiArray.countFreePlaces());
     }
 
 }
