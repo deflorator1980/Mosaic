@@ -44,7 +44,6 @@ public class MultiArray {
 
     public int countFreePlaces() {
         int count = 0;
-        MultiArray multiArray = new MultiArray();
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
                 if(graph[v][h] == '#') count++;
@@ -67,6 +66,30 @@ public class MultiArray {
         }
     }
 
+    public void tryTwoFiveRnd(int y, int x) {
+        for (int v = y; v < SIZE; v++) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryTwoFive(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
+                if (graph[v][h] == '#')
+                    tryTwoFive(v, h);
+            }
+        }
+
+        for (int v = y; v >= 0; v--) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryTwoFive(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
+                if (graph[v][h] == '#')
+                    tryTwoFive(v, h);
+            }
+        }
+    }
+
     public void tryOne() {
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
@@ -77,9 +100,57 @@ public class MultiArray {
         }
     }
 
+    public void tryOneRnd(int y, int x) {
+        for (int v = y; v < SIZE; v++) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryOne(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
+                if (graph[v][h] == '#')
+                    tryOne(v, h);
+            }
+        }
+
+        for (int v = y; v >= 0; v--) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryOne(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
+                if (graph[v][h] == '#')
+                    tryOne(v, h);
+            }
+        }
+    }
+
     public void tryThreeSix() {
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryThreeSix(v, h);
+            }
+        }
+    }
+
+    public void tryThreeSixRnd(int y, int x) {
+        for (int v = y; v < SIZE; v++) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryThreeSix(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
+                if (graph[v][h] == '#')
+                    tryThreeSix(v, h);
+            }
+        }
+
+        for (int v = y; v >= 0; v--) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryThreeSix(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
                 if (graph[v][h] == '#')
                     tryThreeSix(v, h);
             }
@@ -95,9 +166,57 @@ public class MultiArray {
         }
     }
 
+    public void tryFourSevenEightRnd(int y, int x) {
+        for (int v = y; v < SIZE; v++) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryFourSevenEight(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
+                if (graph[v][h] == '#')
+                    tryFourSevenEight(v, h);
+            }
+        }
+
+        for (int v = y; v >= 0; v--) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryFourSevenEight(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
+                if (graph[v][h] == '#')
+                    tryFourSevenEight(v, h);
+            }
+        }
+    }
+
     public void tryAB() {
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryAB(v, h);
+            }
+        }
+    }
+
+    public void tryABRnd(int y, int x) {
+        for (int v = y; v < SIZE; v++) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryAB(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
+                if (graph[v][h] == '#')
+                    tryAB(v, h);
+            }
+        }
+
+        for (int v = y; v >= 0; v--) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryAB(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
                 if (graph[v][h] == '#')
                     tryAB(v, h);
             }
@@ -113,6 +232,30 @@ public class MultiArray {
         }
     }
 
+    public void tryNineRnd(int y, int x) {
+        for (int v = y; v < SIZE; v++) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryNine(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
+                if (graph[v][h] == '#')
+                    tryNine(v, h);
+            }
+        }
+
+        for (int v = y; v >= 0; v--) {
+            for (int h = x; h < SIZE; h++) {
+                if (graph[v][h] == '#')
+                    tryNine(v, h);
+            }
+            for (int h = x; h >= 0; h--) {
+                if (graph[v][h] == '#')
+                    tryNine(v, h);
+            }
+        }
+    }
+//*****************************************************
 
     public void tryTwoFive(int vert, int hor) {
         char figure;
