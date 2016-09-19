@@ -1,5 +1,6 @@
 package h;
 
+import dao.Coordinates;
 import dao.Game;
 import dao.Game2;
 
@@ -90,6 +91,13 @@ public class MultiArray {
     public void playersConfig2(Game2 game2) {
         graph[game2.getXy().getVert()][game2.getXy().getHor()] = game2.getFigure();
         unavailable(game2.getFigure());
+    }
+
+    public void playersConfig(Game game) {
+        for (Coordinates coordinates : game.getXy()) {
+            graph[coordinates.getVert()][coordinates.getHor()] = game.getFigure();
+        }
+        unavailable(game.getFigure());
     }
 
 

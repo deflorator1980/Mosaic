@@ -1,21 +1,19 @@
 package dao;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
+import java.util.List;
 
 /**
- * Created by a on 18.09.16.
+ * Created by a on 19.09.16.
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Game {
-
     private Character figure;
+    private List<Coordinates> xy;
 
-    private Map<Integer, Integer> coordinates;
 }

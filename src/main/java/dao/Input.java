@@ -7,12 +7,11 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * Created by a on 18.09.16.
+ * Created by a on 19.09.16.
  */
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Input {
-    List<Game> tetraminos;
+    List<Game> tetrominos;
 }
