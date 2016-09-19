@@ -37,12 +37,6 @@ public class ControllerGame {
         multiArray.tryAB();
         multiArray.tryNine();
 
-        char[] abc0 = new char[SIZE];
-        char[] abc1 = new char[SIZE];
-        char[] abc2 = new char[SIZE];
-        char[] abc3 = new char[SIZE];
-        char[] abc4 = new char[SIZE];
-        char[] abc5 = new char[SIZE];
 
         return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5], multiArray.countFreePlaces());
     }
