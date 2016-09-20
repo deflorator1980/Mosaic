@@ -104,7 +104,7 @@ public class Testing {
         System.out.println("result: " + result);
         System.out.println("result2: " + result2);
 
-        assertEquals(result, result2);
+        assertNotEquals(result, result2);
     }
 
     @Test
