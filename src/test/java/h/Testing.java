@@ -12,6 +12,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
 
+import static h.MultiArray.SIZE;
+import static h.MultiArray.graph;
 import static org.junit.Assert.*;
 
 /**
@@ -55,7 +57,7 @@ public class Testing {
         char[] line5 = l5.toCharArray();
         result.setLine5(line5);
 
-        result.setFreePlaces(0);
+//        result.setFreePlaces(0);
 
         Figure figure = new Figure();
         figure.setFigure('4');
@@ -81,4 +83,17 @@ public class Testing {
         multiArray.availability();
     }
 
+    @Test
+    public void checkFreePlaces() {
+        multiArray.prepareField();
+
+        System.out.println("free places: " + multiArray.countFreePlaces());
+
+        for (int v = 0; v < SIZE; v++) {
+            for (int h = 0; h < SIZE; h++) {
+                System.out.print(graph[v][h]);
+            }
+            System.out.println();
+        }
+    }
 }

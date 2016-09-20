@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 /**
  * Created by a on 18.09.16.
  */
-@Component
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,5 +18,5 @@ public class Result {
     private char[] line3;
     private char[] line4;
     private char[] line5;
-    private int freePlaces;
+//    private int freePlaces;
 }

@@ -42,7 +42,7 @@ public class MultiArray {
         }
     }
 
-    public int countFreePlaces() {
+    public static int countFreePlaces() {
         int count = 0;
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
