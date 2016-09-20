@@ -1,6 +1,8 @@
 package h;
 
 import dao.*;
+import exp.Exp2;
+import exp.ExpHashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import static h.MultiArray.graph;
 @Repository
 @RestController
 public class ControllerGame {
+
 
     @RequestMapping(value = "/response", method = RequestMethod.POST)
     public Result response(@RequestBody Input input) {
@@ -68,29 +71,40 @@ public class ControllerGame {
 
     @RequestMapping(value = "/multirnd", method = RequestMethod.POST)
     public Result multiRnd(@RequestBody Input input) {
-
-        TreeMap<Integer, Result> resultsCollection = new TreeMap<>();
+//        Exp2 exp2 = new Exp2();
+        ExpHashMap expHashMap = new ExpHashMap();
+//        TreeMap<Integer, Result> treeMap = new TreeMap<>();
 //        Result result;
         for (int i = 0; i < 10; i++) {
-            Result result = new Result();
-            result = rnd(input);
+            Result result = rnd(input);
             if (result != null) {
                 System.out.print(result.getFreePlaces());
 //                System.out.print(MultiArray.countFreePlaces());
                 System.out.println(" " + result);
                 System.out.println(result.hashCode());
-                resultsCollection.put(result.getFreePlaces(), result);
+//                treeMap.put(result.getFreePlaces(), result);
+//                exp2.addResult(result);
+                expHashMap.addResult(result);
+
 //                resultsCollection.put(MultiArray.countFreePlaces(), result);
                 if (result.getFreePlaces() == 0) {
 //                if (MultiArray.countFreePlaces() == 0) {
                     System.out.println(MultiArray.countFreePlaces());
-                    System.out.println(resultsCollection);
+//                    System.out.println(treeMap);
+//                    System.out.println(exp2.getResult());
+                    System.out.println(expHashMap.getResult());
+
+
                     return result;
                 }
             }
         }
-        System.out.println(resultsCollection);
-        return resultsCollection.get(resultsCollection.firstKey());
+//        System.out.println(exp2.getResult());
+        System.out.println(expHashMap.getResult());
+
+//        return treeMap.get(treeMap.firstKey());
+//        return exp2.getResult().get(exp2.getResult().firstKey());
+        return expHashMap.getMin();
     }
 
 }

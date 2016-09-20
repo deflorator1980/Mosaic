@@ -9,6 +9,19 @@ import java.util.*;
  * Created by a on 19.09.16.
  */
 public class Exp {
+
+    static TreeMap<Integer, Result> treeMap = new TreeMap<>();
+
+//    public TreeMap minResult(Result result) {
+    public void minResult(Result result) {
+        TreeMap<Integer, Result> treeMap = new TreeMap<>();
+        treeMap.put(result.getFreePlaces(), result);
+
+//        System.out.println(treeMap);
+//        System.out.println(treeMap.get(treeMap.firstKey()));
+//        return treeMap;
+    }
+
     public static void main(String[] args) {
 //        Random rnd = new Random();
 //        for (int i = 0; i < 10; i++)
@@ -84,7 +97,11 @@ public class Exp {
 
 //        System.out.println(treeMap);
 //----------------------------------------------------------------------------
-        TreeMap<Integer, Result> treeMap = new TreeMap<>();
+//        TreeMap<Integer, Result> treeMap = new TreeMap<>();
+
+//        Exp exp = new Exp();
+
+        Exp2 exp2 = new Exp2();
 
         Result result = new Result();
         result.setLine0("9bbb88".toCharArray());
@@ -95,7 +112,10 @@ public class Exp {
         result.setLine5("#2225a".toCharArray());
         result.setFreePlaces(4);
 
-        treeMap.put(result.getFreePlaces(), result);
+        exp2.addResult(result);
+//        treeMap.put(result.getFreePlaces(), result);
+
+//        exp.minResult(result);
 
         result = new Result();
         result.setLine0("9#bb#8".toCharArray());
@@ -106,7 +126,11 @@ public class Exp {
         result.setLine5("#2225a".toCharArray());
         result.setFreePlaces(6);
 
-        treeMap.put(result.getFreePlaces(), result);
+        exp2.addResult(result);
+//        treeMap.put(result.getFreePlaces(), result);
+
+//        exp.minResult(result);
+
 
         result = new Result();
         result.setLine0("##bb88".toCharArray());
@@ -117,8 +141,14 @@ public class Exp {
         result.setLine5("92225a".toCharArray());
         result.setFreePlaces(2);
 
-        treeMap.put(result.getFreePlaces(), result);
+        exp2.addResult(result);
+//        treeMap.put(result.getFreePlaces(), result);
 
-        System.out.println(treeMap);
+//        exp.minResult(result);
+
+//        System.out.println(treeMap);
+        System.out.println(exp2.getResult());
+//        System.out.println(treeMap.get(treeMap.firstKey()));
+        System.out.println(exp2.getResult().firstKey());
     }
 }
