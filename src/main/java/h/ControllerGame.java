@@ -41,7 +41,7 @@ public class ControllerGame {
         multiArray.tryNine();
 
 
-        return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5]);
+        return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5], multiArray.countFreePlaces());
     }
 
     @RequestMapping(value = "/rnd", method = RequestMethod.POST)
@@ -61,8 +61,8 @@ public class ControllerGame {
         multiArray.tryFourSevenEightRnd(rnd.nextInt(6), rnd.nextInt(6));
         multiArray.tryABRnd(rnd.nextInt(6), rnd.nextInt(6));
         multiArray.tryNineRnd(rnd.nextInt(6), rnd.nextInt(6));
-//        return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5], multiArray.countFreePlaces());
-        return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5]);
+        return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5], multiArray.countFreePlaces());
+//        return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5]);
 
     }
 
@@ -70,17 +70,19 @@ public class ControllerGame {
     public Result multiRnd(@RequestBody Input input) {
 
         TreeMap<Integer, Result> resultsCollection = new TreeMap<>();
-        Result result;
+//        Result result;
         for (int i = 0; i < 10; i++) {
+            Result result = new Result();
             result = rnd(input);
             if (result != null) {
-//                System.out.print(result.getFreePlaces());
-                System.out.print(MultiArray.countFreePlaces());
+                System.out.print(result.getFreePlaces());
+//                System.out.print(MultiArray.countFreePlaces());
                 System.out.println(" " + result);
-//                resultsCollection.put(result.getFreePlaces(), result);
-                resultsCollection.put(MultiArray.countFreePlaces(), result);
-//                if (result.getFreePlaces() == 0) {
-                if (MultiArray.countFreePlaces() == 0) {
+                System.out.println(result.hashCode());
+                resultsCollection.put(result.getFreePlaces(), result);
+//                resultsCollection.put(MultiArray.countFreePlaces(), result);
+                if (result.getFreePlaces() == 0) {
+//                if (MultiArray.countFreePlaces() == 0) {
                     System.out.println(MultiArray.countFreePlaces());
                     System.out.println(resultsCollection);
                     return result;

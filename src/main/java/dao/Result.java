@@ -18,5 +18,5 @@ public class Result {
     private char[] line3;
     private char[] line4;
     private char[] line5;
-//    private int freePlaces;
+    private int freePlaces;
 }
