@@ -16,7 +16,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static h.MultiArray.SIZE;
-import static h.MultiArray.graph;
 
 /**
  * Created by a on 18.09.16.
@@ -45,7 +44,8 @@ public class ControllerGame {
         multiArray.tryNine();
 
 
-        return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5], multiArray.countFreePlaces());
+        return new Result(multiArray.graph[0], multiArray.graph[1], multiArray.graph[2], multiArray.graph[3],
+                multiArray.graph[4], multiArray.graph[5], multiArray.countFreePlaces());
     }
 
     @RequestMapping(value = "/rnd", method = RequestMethod.POST)
@@ -65,7 +65,8 @@ public class ControllerGame {
         multiArray.tryFourSevenEightRnd(rnd.nextInt(6), rnd.nextInt(6));
         multiArray.tryABRnd(rnd.nextInt(6), rnd.nextInt(6));
         multiArray.tryNineRnd(rnd.nextInt(6), rnd.nextInt(6));
-        return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5], multiArray.countFreePlaces());
+        return new Result(multiArray.graph[0], multiArray.graph[1], multiArray.graph[2],
+                multiArray.graph[3], multiArray.graph[4], multiArray.graph[5], multiArray.countFreePlaces());
 //        return new Result(graph[0], graph[1], graph[2], graph[3], graph[4], graph[5]);
 
     }

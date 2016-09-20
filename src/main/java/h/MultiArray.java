@@ -13,8 +13,7 @@ import java.util.*;
 @Repository
 public class MultiArray {
     static final int SIZE = 6;
-//    static boolean fieldIsReady = false;
-    static char[][] graph = new char[SIZE][SIZE];
+     char[][] graph = new char[SIZE][SIZE];
     boolean two = true;
     boolean five = true;
     boolean one = true;
@@ -43,7 +42,7 @@ public class MultiArray {
         }
     }
 
-    public static int countFreePlaces() {
+    public int countFreePlaces() {
         int count = 0;
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {

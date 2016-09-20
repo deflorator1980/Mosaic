@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.Arrays;
 
 import static h.MultiArray.SIZE;
-import static h.MultiArray.graph;
 import static org.junit.Assert.*;
 
 /**
@@ -121,7 +120,7 @@ public class Testing {
 
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
-                System.out.print(graph[v][h]);
+                System.out.print(multiArray.graph[v][h]);
             }
             System.out.println();
         }
