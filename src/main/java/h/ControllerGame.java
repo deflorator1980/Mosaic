@@ -2,6 +2,7 @@ package h;
 
 import dao.*;
 import exp.Exp2;
+import exp.ExpArrayList;
 import exp.ExpHashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -72,27 +73,31 @@ public class ControllerGame {
     @RequestMapping(value = "/multirnd", method = RequestMethod.POST)
     public Result multiRnd(@RequestBody Input input) {
 //        Exp2 exp2 = new Exp2();
-        ExpHashMap expHashMap = new ExpHashMap();
+//        ExpHashMap expHashMap = new ExpHashMap();
+        ExpArrayList expArrayList = new ExpArrayList();
+
 //        TreeMap<Integer, Result> treeMap = new TreeMap<>();
 //        Result result;
         for (int i = 0; i < 10; i++) {
             Result result = rnd(input);
             if (result != null) {
-                System.out.print(result.getFreePlaces());
+//                System.out.print(result.getFreePlaces());
 //                System.out.print(MultiArray.countFreePlaces());
-                System.out.println(" " + result);
-                System.out.println(result.hashCode());
+//                System.out.println(" " + result);
+//                System.out.println(result.hashCode());
 //                treeMap.put(result.getFreePlaces(), result);
 //                exp2.addResult(result);
-                expHashMap.addResult(result);
+//                expHashMap.addResult(result);
+                expArrayList.addResult(result);
 
 //                resultsCollection.put(MultiArray.countFreePlaces(), result);
                 if (result.getFreePlaces() == 0) {
 //                if (MultiArray.countFreePlaces() == 0) {
-                    System.out.println(MultiArray.countFreePlaces());
+//                    System.out.println(MultiArray.countFreePlaces());
 //                    System.out.println(treeMap);
 //                    System.out.println(exp2.getResult());
-                    System.out.println(expHashMap.getResult());
+//                    System.out.println(expHashMap.getResult());
+//                    System.out.println(expArrayList.getResult());
 
 
                     return result;
@@ -100,11 +105,12 @@ public class ControllerGame {
             }
         }
 //        System.out.println(exp2.getResult());
-        System.out.println(expHashMap.getResult());
+//        System.out.println(expArrayList.getResult());
 
 //        return treeMap.get(treeMap.firstKey());
 //        return exp2.getResult().get(exp2.getResult().firstKey());
-        return expHashMap.getMin();
+//        return expHashMap.getMin();
+        return expArrayList.getMin();
     }
 
 }

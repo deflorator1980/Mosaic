@@ -79,6 +79,36 @@ public class Testing {
     }
 
     @Test
+    public void checkRndPointer() {
+        Figure figure = new Figure();
+        figure.setFigure('Y');
+        figure.setXy(Arrays.asList(
+                new Coordinates(0, 0),
+                new Coordinates(0, 1),
+                new Coordinates(1, 0)));
+
+        Figure figure2 = new Figure();
+        figure2.setFigure('X');
+        figure2.setXy(Arrays.asList(
+                new Coordinates(0, 0),
+                new Coordinates(0, 1),
+                new Coordinates(1, 0)));
+
+        Input input = new Input(Arrays.asList(figure));
+        Input input2 = new Input(Arrays.asList(figure2));
+
+        Result result = controllerGame.rnd(input);
+        Result result2 = controllerGame.rnd(input2);
+
+//        System.out.println(result == result2);
+//        System.out.println(result.equals(result2));
+        System.out.println("result: " + result);
+        System.out.println("result2: " + result2);
+
+        assertEquals(result, result2);
+    }
+
+    @Test
     public void checkAvailability() {
         multiArray.availability();
     }

@@ -12,8 +12,8 @@ import java.util.*;
  */
 @Repository
 public class MultiArray {
-    static int SIZE = 6;
-//    static char[][] graph = new char[SIZE][SIZE];
+    static final int SIZE = 6;
+//    static boolean fieldIsReady = false;
     static char[][] graph = new char[SIZE][SIZE];
     boolean two = true;
     boolean five = true;
@@ -35,6 +35,7 @@ public class MultiArray {
     }
 
     public void prepareField() {
+//        if(fieldIsReady) return;
         for (int v = 0; v < SIZE; v++) {
             for (int h = 0; h < SIZE; h++) {
                 graph[v][h] = '#';
