@@ -11,6 +11,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static h.MultiArray.SIZE;
 import static org.junit.Assert.*;
@@ -93,8 +94,8 @@ public class Testing {
                 new Coordinates(0, 1),
                 new Coordinates(1, 0)));
 
-        Input input = new Input(Arrays.asList(figure));
-        Input input2 = new Input(Arrays.asList(figure2));
+        Input input = new Input(Collections.singletonList(figure));
+        Input input2 = new Input(Collections.singletonList(figure2));
 
         Result result = controllerGame.rnd(input);
         Result result2 = controllerGame.rnd(input2);
