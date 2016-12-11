@@ -1,20 +1,16 @@
 package h;
 
-import dao.*;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import pojos.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
-import java.util.TreeMap;
 
 /**
  * Created by a on 18.09.16.
  */
 @Repository
 @RestController
-@Slf4j
 public class ControllerGame {
 
 
@@ -60,28 +56,17 @@ public class ControllerGame {
 
     @RequestMapping(value = "/multirnd", method = RequestMethod.POST)
     public Result multiRnd(@RequestBody Input input) {
-
-        long start = System.currentTimeMillis();
-
         Result min = new Result();
         min.setFreePlaces(-1);
-
         for (int i = 0; i < 100; i++) {
-            Result result = rnd(input);
-            if (result != null) {
+            Result result = rnd(input);     // получаем данные
                 if (result.getFreePlaces() == 0) {
-                    long stop = System.currentTimeMillis();
-                    System.out.println(stop - start);
                     return result;
                 }
-
                 if((min.getFreePlaces() > result.getFreePlaces()) ||(min.getFreePlaces() == -1)){
-                    min = result;
+                    min = result;           // выбираем минимальный результат
                 }
-            }
         }
-        long stop = System.currentTimeMillis();
-        System.out.println(stop - start);
         return min;
     }
 

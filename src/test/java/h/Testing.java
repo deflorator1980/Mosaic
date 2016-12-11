@@ -1,9 +1,9 @@
 package h;
 
-import dao.Coordinates;
-import dao.Figure;
-import dao.Input;
-import dao.Result;
+import pojos.Coordinates;
+import pojos.Figure;
+import pojos.Input;
+import pojos.Result;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

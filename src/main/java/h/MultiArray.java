@@ -1,8 +1,7 @@
 package h;
 
-import dao.Coordinates;
-import dao.Figure;
-import org.springframework.stereotype.Component;
+import pojos.Coordinates;
+import pojos.Figure;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;

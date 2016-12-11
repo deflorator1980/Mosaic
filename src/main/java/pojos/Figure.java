@@ -1,4 +1,4 @@
-package dao;
+package pojos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,6 +12,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Input {
-    List<Figure> tetrominos;
+public class Figure {
+    private Character figure;
+    private List<Coordinates> xy;
+
 }
