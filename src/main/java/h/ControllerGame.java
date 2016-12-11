@@ -1,6 +1,7 @@
 package h;
 
 import dao.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.TreeMap;
  */
 @Repository
 @RestController
+@Slf4j
 public class ControllerGame {
 
 
@@ -59,18 +61,28 @@ public class ControllerGame {
     @RequestMapping(value = "/multirnd", method = RequestMethod.POST)
     public Result multiRnd(@RequestBody Input input) {
 
-        TreeMap<Integer, Result> treeMap = new TreeMap<>();
+        long start = System.currentTimeMillis();
+
+        Result min = new Result();
+        min.setFreePlaces(-1);
+
         for (int i = 0; i < 100; i++) {
             Result result = rnd(input);
             if (result != null) {
-                treeMap.put(result.getFreePlaces(), result);
                 if (result.getFreePlaces() == 0) {
+                    long stop = System.currentTimeMillis();
+                    System.out.println(stop - start);
                     return result;
+                }
+
+                if((min.getFreePlaces() > result.getFreePlaces()) ||(min.getFreePlaces() == -1)){
+                    min = result;
                 }
             }
         }
-
-        return treeMap.get(treeMap.firstKey());
+        long stop = System.currentTimeMillis();
+        System.out.println(stop - start);
+        return min;
     }
 
 }
