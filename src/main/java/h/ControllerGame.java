@@ -57,13 +57,13 @@ public class ControllerGame {
     @RequestMapping(value = "/multirnd", method = RequestMethod.POST)
     public Result multiRnd(@RequestBody Input input) {
         Result min = new Result();
-        min.setFreePlaces(-1);
+        min.setFreePlaces((int) Double.POSITIVE_INFINITY);
         for (int i = 0; i < 100; i++) {
             Result result = rnd(input);     // получаем данные
                 if (result.getFreePlaces() == 0) {
                     return result;
                 }
-                if((min.getFreePlaces() > result.getFreePlaces()) ||(min.getFreePlaces() == -1)){
+                if((min.getFreePlaces() > result.getFreePlaces())){
                     min = result;           // выбираем минимальный результат
                 }
         }
